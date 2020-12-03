@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="/teste.png" rel="stylesheet">
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    </head>
+
+    <script>
+    
+
+    function screnchot(){
+
+        html2canvas(document.querySelector("#img")).then(canvas => {
+
+            document.getElementById('holder').appendChild(canvas);
+            var a = document.createElement('a');
+
+            var can = document.getElementsByTagName("canvas");
+            var src = can[can.length-1].toDataURL("image/png");
+            
+            a.href = src
+            a.download = "image.png"
+            a.click();
+
+            document.getElementById('holder').innerHTML='';
+                        
+        });
+        
+    }
+        
+
+
+    </script>
+
+
+    <body>
+        <div id="capture" style="padding: 10px; background: #f5da55">          
+            <img id="img" src="/teste.png" alt="">
+        </div> 
+
+        <button onclick="screnchot()">teste</button> 
+        <div id="holder" style="display:none"></div>
+        
+    </body>
+
+
+</html>
